@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Main {
+    // Method to convert steps to miles
+    public static double stepsToMiles(int steps) throws IllegalArgumentException {
+        if (steps < 0) {
+            throw new IllegalArgumentException("Exception: Negative step count entered.");
+        }
+        return steps / 2000.0;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of steps: ");
+
+        try {
+            if (!scanner.hasNextInt()) {
+                throw new IllegalArgumentException("Exception: Invalid input. Please enter an integer.");
+            }
+            int steps = scanner.nextInt();
+            double miles = stepsToMiles(steps);
+            System.out.printf("%.2f\n", miles);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
+}
